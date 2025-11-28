@@ -124,7 +124,7 @@ Contribuições são sempre bem-vindas!
 
 ## 📝 Licença
 
-Este projeto está sob a licença ISC. Veja o arquivo `package.json` para mais detalhes.
+Este projeto está sob a licença GPL-3.0. Veja o arquivo `LICENSE` para mais detalhes.
 
 ---
 Desenvolvido com ❤️ para fins de estudo e gestão condominial.

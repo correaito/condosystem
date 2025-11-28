@@ -44,7 +44,7 @@
     "supertest": "^6.3.3"
   },
   "author": "",
-  "license": "ISC",
+  "license": "GPL-3.0",
   "description": "<h1 align=\"center\">Archivex 💾🗃️</h1>\r <h4 align=\"center\">Sistema para gerenciamento de Condominio desenvolvido com finalidade de estudo e treinamento de sistemas.</h4>",
   "keywords": []
 }
