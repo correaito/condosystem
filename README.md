@@ -25,13 +25,20 @@
 - **Extratos:** Visualização de histórico financeiro.
 - **Dashboard:** Visão geral da situação do condomínio.
 
+### 🎨 Design & UX (Remodelado)
+O sistema passou por uma reformulação visual completa baseada no **Google Material Design**, visando modernidade e usabilidade:
+- **Interface Premium:** Visual limpo, com uso estratégico de cores, tipografia moderna e espaçamento consistente.
+- **Material Design:** Componentes visuais (cards, botões, inputs) seguindo os padrões de profundidade, sombras e movimento do Material Design.
+- **Experiência do Usuário (UX):** Fluxos de navegação otimizados e feedback visual claro para ações do usuário.
+- **Responsividade:** Layout adaptável para desktops, tablets e smartphones.
+
 ## 🛠️ Tecnologias Utilizadas
 
 - **Backend:** [Node.js](https://nodejs.org/) com [Express](https://expressjs.com/)
 - **Database:** [MongoDB](https://www.mongodb.com/) com [Mongoose](https://mongoosejs.com/)
 - **Frontend:** 
   - [Handlebars](https://handlebarsjs.com/) (Template Engine)
-  - [Bootstrap 4](https://getbootstrap.com/) & [MDBootstrap](https://mdbootstrap.com/) (UI Framework)
+  - [Bootstrap 4](https://getbootstrap.com/) & [MDBootstrap](https://mdbootstrap.com/) (Material Design for Bootstrap)
   - CSS3 & HTML5
 - **Autenticação:** [Passport.js](https://www.passportjs.org/)
 - **Geração de PDF:** [PDFKit](https://pdfkit.org/)
@@ -48,8 +55,8 @@ Antes de começar, certifique-se de ter instalado em sua máquina:
 
 1. **Clone o repositório**
    ```bash
-   git clone https://github.com/seu-usuario/condominio-web.git
-   cd condominio-web
+   git clone https://github.com/correaito/condosystem.git
+   cd condosystem
    ```
 
 2. **Instale as dependências**
