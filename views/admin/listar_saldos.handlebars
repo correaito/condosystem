@@ -1,0 +1,44 @@
+{{#if saldos.length}}
+<div class="container col-md-12">
+  <div class="card mb-3 z-depth-1">
+    <div class="card-header">
+      Listagem de Saldos
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table mt-3 mb-2 table-hover table-striped" id="tabela-saldos">
+          <thead class="table-dark">
+            <tr>
+              <th>Morador</th>
+              <th>Valor (R$)</th>
+              <th>Conta</th>
+              <th>Situação</th>
+              <th>Data</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each saldos}}
+            <tr>
+              <td class="text-nowrap">{{morador}}</td>
+              <td class="text-nowrap">{{valor}}</td>
+              <td>{{conta}}</td>
+              <td>{{situacao}}</td>
+              <td>{{formatDate date}}</td>
+              <td>
+                <a href="/admin/excluir_saldo/{{_id}}"
+                  onclick="return confirm('Tem certeza que deseja excluir este saldo?');"
+                  class="btn btn-danger btn-sm waves-effect waves-light"><i title="Excluir"
+                    class="fa-regular fa-trash-can"></i></a>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{{else}}
+<div class="alert alert-info">Não há saldos registrados.</div>
+{{/if}}

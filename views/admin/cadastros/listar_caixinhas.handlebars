@@ -1,0 +1,40 @@
+<div class="container col-md-12">
+  <div class="card mb-3 z-depth-1">
+    <div class="card-header">
+      Listagem de Caixinhas
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table mt-3 mb-2 table-hover table-striped" id="table_caixinhas">
+          <thead class="table-dark">
+            <tr>
+              <th>Data</th>
+              <th>Valor</th>
+              <th>Descrição</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each caixinhas}}
+            <tr>
+              <td>{{formatDate data}}</td>
+              <td>R$ {{valor}}</td>
+              <td>{{descricao}}</td>
+              <td>
+                <a href="/admin/cadastros/editar_caixinha/{{_id}}"
+                  class="btn btn-warning btn-sm waves-effect waves-light"><i title="Editar"
+                    class="fa-regular fa-pen-to-square"></i></a>
+                <form action="/admin/cadastros/excluir_caixinha/{{_id}}" method="POST" style="display:inline;">
+                  <button type="submit" class="btn btn-danger btn-sm waves-effect waves-light"
+                    onclick="return confirm('Tem certeza que deseja excluir esta caixinha?');"><i title="Excluir"
+                      class="fa-regular fa-trash-can"></i></button>
+                </form>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

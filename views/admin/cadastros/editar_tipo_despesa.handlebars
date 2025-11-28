@@ -1,0 +1,70 @@
+<div class="container col-md-5">
+    <div class="card mb-3 z-depth-1">
+        <div class="card-header">
+            Editar Tipo de Despesa
+        </div>
+        <div class="card-body">
+            <form action="/admin/cadastros/edicao_tipo_despesa" method="POST">
+                <input type="hidden" name="id" value="{{tipoDespesa._id}}" />
+                <div class="md-form">
+                    <input type="text" class="form-control" id="nome" name="nome" value="{{tipoDespesa.nome}}"
+                        required />
+                    <label for="nome" class="active">Nome</label>
+                </div>
+                <div class="md-form">
+                    <input type="text" class="form-control" id="slug" name="slug" value="{{tipoDespesa.slug}}"
+                        required />
+                    <label for="slug" class="active">Slug</label>
+                </div>
+                <div class="md-form">
+                    <input type="text" class="form-control" id="classificacao" name="classificacao"
+                        value="{{tipoDespesa.classificacao}}" required />
+                    <label for="classificacao" class="active">Classificação</label>
+                </div>
+
+                <div class="md-form">
+                    <select class="browser-default custom-select mb-4" id="caixinha" name="caixinha" required>
+                        <option value="Nenhum" {{#ifEqual tipoDespesa.caixinha "Nenhum" }}selected{{/ifEqual}}>Nenhum
+                        </option>
+                        <option value="Somar" {{#ifEqual tipoDespesa.caixinha "Somar" }}selected{{/ifEqual}}>Somar ao
+                            Caixinha</option>
+                        <option value="Subtrair" {{#ifEqual tipoDespesa.caixinha "Subtrair" }}selected{{/ifEqual}}>
+                            Subtrair do Caixinha</option>
+                    </select>
+                    <!-- <label for="caixinha" class="active">Caixinha</label> -->
+                </div>
+                <div class="md-form" id="caixinhaIdDiv"
+                    style="display:{{#if tipoDespesa.caixinhaId}}block{{else}}none{{/if}}">
+                    <select class="browser-default custom-select mb-4" id="caixinhaId" name="caixinhaId">
+                        {{#each caixinhas}}
+                        <option value="{{_id}}" {{#ifEqual ../tipoDespesa.caixinhaId _id}}selected{{/ifEqual}}>
+                            {{descricao}} - R$ {{valor}}
+                        </option>
+                        {{/each}}
+                    </select>
+                    <!-- <label for="caixinhaId" class="active">Selecione o Caixinha</label> -->
+                </div>
+                <button type="submit" class="btn btn-success waves-effect waves-light">Salvar</button>
+                <button type="button" onclick="history.back()"
+                    class="btn btn-warning waves-effect waves-light">Voltar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Função para mostrar/esconder o select de Caixinha
+    function toggleCaixinhaSelect() {
+        const caixinhaOption = document.getElementById("caixinha").value;
+        const caixinhaSelect = document.getElementById("caixinhaIdDiv");
+        if (caixinhaOption === "Somar" || caixinhaOption === "Subtrair") {
+            caixinhaSelect.style.display = "block";
+        } else {
+            caixinhaSelect.style.display = "none";
+        }
+    }
+
+    // Chame a função ao carregar a página e quando o valor do select mudar
+    document.addEventListener("DOMContentLoaded", toggleCaixinhaSelect);
+    document.getElementById("caixinha").addEventListener("change", toggleCaixinhaSelect);
+</script>

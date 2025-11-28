@@ -1,0 +1,56 @@
+<div class="container col-md-6">
+  <div class="card mb-3 z-depth-1">
+    <div class="card-header">
+      Editar Conta
+    </div>
+    <div class="card-body">
+      <form action="/admin/editar_conta/{{conta._id}}" method="POST">
+        <div class="md-form">
+          <input type="text" class="form-control" id="numero" name="numero" value="{{conta.numero}}" readonly />
+          <label for="numero" class="active">Número</label>
+        </div>
+        <div class="md-form">
+          <input type="date" class="form-control" id="data" name="data" value="{{formatDateInput conta.data}}"
+            required />
+          <label for="data" class="active">Data</label>
+        </div>
+        <div class="md-form">
+          <select class="browser-default custom-select mb-4" id="morador" name="morador" required>
+            {{#each moradores}}
+            {{#if ../conta.morador._id}}
+            <option value="{{this._id}}" {{#if (eq (toString ../conta.morador._id) (toString
+              this._id))}}selected{{/if}}>
+              {{this.nome}} - Apt {{this.apto}}
+            </option>
+            {{else}}
+            <option value="{{this._id}}" {{#if (eq (toString ../conta.morador) (toString this._id))}}selected{{/if}}>
+              {{this.nome}} - Apt {{this.apto}}
+            </option>
+            {{/if}}
+            {{/each}}
+          </select>
+          <!-- <label for="morador" class="active">Morador</label> -->
+        </div>
+        <div class="md-form">
+          <input type="text" class="form-control" id="competencia" name="competencia" value="{{conta.competencia}}"
+            required />
+          <label for="competencia" class="active">Competência</label>
+        </div>
+        <div class="md-form">
+          <input type="text" class="form-control" id="situacao" name="situacao" value="{{conta.situacao}}" required />
+          <label for="situacao" class="active">Situação</label>
+        </div>
+        <div class="md-form">
+          <input type="text" class="form-control" id="valor" name="valor" value="{{conta.valor}}" required />
+          <label for="valor" class="active">Valor</label>
+        </div>
+        <div class="md-form">
+          <input type="text" class="form-control" id="observacao" name="observacao" value="{{conta.observacao}}" />
+          <label for="observacao" class="active">Observação</label>
+        </div>
+        <button type="submit" class="btn btn-primary waves-effect waves-light">Salvar Alterações</button>
+        <button type="button" onclick="history.back()" class="btn btn-warning waves-effect waves-light">Voltar</button>
+      </form>
+    </div>
+  </div>
+</div>

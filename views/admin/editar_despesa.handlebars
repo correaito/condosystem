@@ -1,0 +1,40 @@
+{{#if despesa}}
+<div class="container col-md-5">
+  <div class="card mb-3 z-depth-1">
+    <div class="card-header">
+      Editar Despesa
+    </div>
+    <div class="card-body">
+      <form action="/admin/editar_despesa/{{despesa._id}}" method="POST">
+        <div class="md-form">
+          <select class="browser-default custom-select mb-4" id="descricao" name="descricao" required>
+            {{#each tiposDespesas}}
+            <option value="{{this.nome}}" {{#ifEqual this.nome ../despesa.descricao}}selected{{/ifEqual}}>{{this.nome}}
+            </option>
+            {{/each}}
+          </select>
+          <!-- <label for="descricao" class="active">Descrição</label> -->
+        </div>
+        <div class="md-form">
+          <input type="text" class="form-control" id="valor" name="valor" value="{{despesa.valor}}" required />
+          <label for="valor" class="active">Valor (R$)</label>
+        </div>
+        <div class="md-form">
+          <input type="text" class="form-control" id="data" name="data" value="{{formatDate despesa.date}}" required />
+          <label for="data" class="active">Data</label>
+        </div>
+        <div class="md-form">
+          <input type="text" class="form-control" id="competencia" name="competencia" value="{{despesa.competencia}}"
+            required />
+          <label for="competencia" class="active">Competência</label>
+        </div>
+        <button type="submit" class="btn btn-primary waves-effect waves-light">Salvar Alterações</button>
+        <button type="button" onclick="history.back()" class="btn btn-warning waves-effect waves-light">Voltar</button>
+
+      </form>
+    </div>
+  </div>
+</div>
+{{else}}
+<div class="alert alert-info">Morador não encontrado.</div>
+{{/if}}

@@ -1,0 +1,36 @@
+{{#each erros}}
+<div class="alert alert-danger">{{texto}}</div>
+{{/each}}
+
+<div class="container col-md-5">
+  <div class="card mb-3 z-depth-1">
+    <div class="card-header">
+      Registro Despesa Geral
+    </div>
+    <div class="card-body">
+      <form action="/admin/lancar_despesa_geral" method="post">
+        <div class="md-form">
+          <select name="tipoDespesa" class="browser-default custom-select mb-4" required>
+            <option value="" disabled selected>Selecione um tipo de despesa</option>
+            {{#each tiposDespesas}}
+            <option value="{{this.nome}}">{{this.nome}}</option>
+            <!-- Enviar o ObjectId em vez do nome -->
+            {{/each}}
+          </select>
+          <!-- <label for="tipoDespesa" class="active">Despesa</label> -->
+        </div>
+        <div class="md-form">
+          <input type="text" name="valor" id="valor" class="form-control" required />
+          <label for="valor">Valor (R$)</label>
+        </div>
+        <div class="md-form">
+          <input type="text" name="competencia" id="competencia" class="form-control" required />
+          <label for="competencia">Competência</label>
+        </div>
+        <button type="submit" class="btn btn-success mt-3 waves-effect waves-light">Lançar despesa</button>
+        <button class="btn btn-warning mt-3 waves-effect waves-light" type="button"
+          onclick="history.back()">Voltar</button>
+      </form>
+    </div>
+  </div>
+</div>

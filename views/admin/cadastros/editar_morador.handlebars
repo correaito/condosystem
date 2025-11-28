@@ -1,0 +1,54 @@
+{{#if morador}}
+<div class="container col-md-5">
+  <div class="card mb-3 z-depth-1">
+    <div class="card-header">
+      Editar Morador
+    </div>
+    <div class="card-body">
+      <form action="/admin/cadastros/editar_morador/{{morador._id}}" method="post">
+        <div class="md-form">
+          <input type="text" name="nome" id="nome" class="form-control" value="{{morador.nome}}" required />
+          <label for="nome" class="active">Nome</label>
+        </div>
+
+        <div class="md-form">
+          <input type="email" name="email" id="email" class="form-control" value="{{morador.email}}" />
+          <label for="email" class="active">Email</label>
+        </div>
+
+        <div class="md-form">
+          <input type="text" name="apto" id="apto" class="form-control" value="{{morador.apto}}" required />
+          <label for="apto" class="active">Apartamento</label>
+        </div>
+
+        <div class="md-form">
+          <input type="text" name="telefone" id="telefone" class="form-control" value="{{morador.telefone}}" />
+          <label for="telefone" class="active">Telefone</label>
+        </div>
+
+        <div class="md-form">
+          <select name="situacao" class="browser-default custom-select mb-4" required>
+            <option value="Proprietário" {{#if (eq morador.situacao "Proprietário" )}}selected{{/if}}>Proprietário
+            </option>
+            <option value="Proprietário Morador" {{#if (eq morador.situacao "Proprietário Morador" )}}selected{{/if}}>
+              Proprietário Morador</option>
+            <option value="Inquilino" {{#if (eq morador.situacao "Inquilino" )}}selected{{/if}}>Inquilino</option>
+          </select>
+          <!-- <label for="situacao" class="active">Situação</label> -->
+        </div>
+
+        <div class="md-form">
+          <input type="text" name="saldo" id="saldo" class="form-control" value="{{morador.saldo}}" />
+          <label for="saldo" class="active">Saldo</label>
+        </div>
+
+        <button type="submit" class="btn btn-success mt-3 waves-effect waves-light">Salvar Alterações</button>
+        <button type="button" onclick="history.back()"
+          class="btn btn-warning mt-3 waves-effect waves-light">Voltar</button>
+      </form>
+    </div>
+  </div>
+</div>
+{{else}}
+<div class="alert alert-info">Morador não encontrado.</div>
+{{/if}}

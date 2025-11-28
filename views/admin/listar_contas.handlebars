@@ -1,0 +1,94 @@
+{{#if contas.length}}
+
+<div class="container col-md-12">
+  <div class="card mb-3 z-depth-1">
+    <div class="card-header">
+      Listagem de Contas
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-sm table-hover table-striped" id="tabela-default">
+          <thead class="table-dark">
+            <tr>
+              <th>Número </th>
+              <th>Data</th>
+              <th>Morador</th>
+              <th>Competência</th>
+              <th>Situação</th>
+              <th>Valor</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each contas}}
+            <tr>
+              <td>{{this.numero}}</td>
+              <td>{{formatDate this.data}}</td>
+              <td class="text-nowrap">{{#if this.morador.nome}}{{this.morador.nome}}{{else}}{{this.morador}}{{/if}}</td>
+              <td>{{this.competencia}}</td>
+              <td>{{this.situacao}}</td>
+              <td>{{this.valor}}</td>
+              <td class="text-nowrap">
+                {{#if ../isAdmin}}
+                <a href="/admin/editar_conta/{{this._id}}" title="Editar Conta"
+                  class="btn btn-warning btn-sm waves-effect waves-light"><i
+                    class="fa-regular fa-pen-to-square"></i></a>
+                <form action="/admin/excluir_conta/{{this._id}}" method="POST" style="display:inline;">
+                  <button type="submit" title="Excluir Conta"
+                    onclick="return confirm('Tem certeza que deseja excluir esta despesa?');"
+                    class="btn btn-danger btn-sm waves-effect waves-light"><i
+                      class="fa-solid fa-trash-can"></i></button>
+                </form>
+                <button
+                  onclick="pagarConta('{{this._id}}', '{{#if this.morador._id}}{{this.morador._id}}{{else}}{{this.morador}}{{/if}}', {{this.valor}})"
+                  title="Pagar Conta" class="btn btn-success btn-sm waves-effect waves-light"><i
+                    class="fa-solid fa-hand-holding-dollar"></i></button>
+                {{/if}}
+                <a href="/admin/detalhar_conta/{{this._id}}" title="Detalhar Conta"
+                  class="btn btn-info btn-sm waves-effect waves-light"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href="/admin/imprimir_fatura/{{this._id}}" target="_blank" title="Imprimir Fatura"
+                  class="btn btn-success btn-sm waves-effect waves-light"><i class="fa-solid fa-print"></i></a>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{else}}
+<div class="alert alert-info">Nenhuma conta encontrada.</div>
+{{/if}}
+
+
+
+
+
+
+
+
+<script>
+  function pagarConta(contaId, morador, valorConta) {
+    const valorPago = prompt(`Digite o valor pago pelo morador ${morador}:`);
+    if (valorPago !== null) {
+      fetch(`/admin/pagar_conta`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ contaId, valorPago, valorConta })
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            alert('Pagamento realizado com sucesso!');
+            location.reload();
+          } else {
+            alert('Ocorreu um erro ao processar o pagamento.');
+          }
+        })
+        .catch(error => console.error('Erro:', error));
+    }
+  }
+</script>

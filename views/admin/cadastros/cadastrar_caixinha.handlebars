@@ -1,0 +1,24 @@
+<div class="container col-md-5">
+  <div class="card mb-3 z-depth-1">
+    <div class="card-header">
+      Cadastrar Caixinha
+    </div>
+    <div class="card-body">
+      <form action="/admin/cadastrar_caixinha" method="POST">
+        <div class="md-form">
+          <input type="date" class="form-control" id="data" name="data" required />
+          <label for="data" class="active">Data</label>
+        </div>
+        <div class="md-form">
+          <input type="number" class="form-control" id="valor" name="valor" required />
+          <label for="valor" class="active">Valor</label>
+        </div>
+        <div class="md-form">
+          <textarea class="md-textarea form-control" id="descricao" name="descricao" required></textarea>
+          <label for="descricao" class="active">Descrição</label>
+        </div>
+        <button type="submit" class="btn btn-primary waves-effect waves-light">Cadastrar</button>
+      </form>
+    </div>
+  </div>
+</div>

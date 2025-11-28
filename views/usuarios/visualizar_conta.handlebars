@@ -1,0 +1,43 @@
+<div class="container col-md-5">
+	<div class="card mb-3 z-depth-1">
+		<div class="card-header">
+			Visualizar Arquivo
+		</div>
+		<div class="card-body">
+			<div class="md-form">
+				<input type="text" name="numero" class="form-control" id="numero" value="{{numero}}" readonly>
+				<label for="numero" class="active">Número</label>
+			</div>
+			<div class="md-form">
+				<input type="text" name="endereco" class="form-control" id="endereco" value="{{endereco}}" readonly>
+				<label for="endereco" class="active">Endereço</label>
+			</div>
+			<div class="md-form">
+				<select name="tipo" class="browser-default custom-select mb-4" id="tipo" disabled>
+					{{#each tipo_bd}}
+					<option value="{{nome}}" {{#ifId nome ../tipo}} selected {{/ifId}}>
+						{{nome}}</option>
+					{{else}}
+					<option value="">Nenhum tipo registrado</option>
+					{{/each}}
+				</select>
+				<!-- <label for="tipo" class="active">Tipo</label> -->
+			</div>
+			<div class="md-form">
+				<textarea readonly name="conteudo" class="md-textarea form-control" id="conteudo"
+					placeholder="Digite o conteúdo">{{conteudo}}</textarea>
+				<label for="conteudo" class="active">Conteúdo</label>
+			</div>
+			<div class="md-form">
+				<select name="situacao" class="browser-default custom-select mb-4" id="situacao" disabled>
+					{{#each situacao_bd}}
+					<option value="{{nome}}" {{#ifId nome ../situacao}} selected {{/ifId}}>{{nome}}</option>
+					{{/each}}
+				</select>
+				<!-- <label for="situacao" class="active">Situação</label> -->
+			</div>
+			<button type="button" class="btn btn-primary waves-effect waves-light" onclick="goBack()"><i
+					class="fa-solid fa-rotate-left"></i> Voltar</button>
+		</div>
+	</div>
+</div>

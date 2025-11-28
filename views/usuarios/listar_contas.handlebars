@@ -1,0 +1,51 @@
+{{#if documentos.length}}
+<div class="container col-md-12">
+  <div class="card mb-3 z-depth-1">
+    <div class="card-header">
+      Meus Documentos
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table mt-3 mb-2 table-hover table-striped display" id="tabela-documentos">
+          <thead class="table-dark">
+            <tr>
+              <th>Nº Caixa</th>
+              <th>Endereço</th>
+              <th>Tipo</th>
+              <th>Conteúdo</th>
+              <th style="display:none"></th>
+              <th>Situação</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each documentos}}
+            <tr>
+              <td>{{numero}}</td>
+              <td>{{endereco}}</td>
+              <td>{{tipo}}</td>
+              <td>{{conteudo}}</td>
+              <td style="display:none">{{conteudo}}</td>
+              <td>{{situação}}</td>
+              <td><a href="/usuarios/gerar_etiqueta/{{numero}}" target="_blank"
+                  class="btn btn-info btn-sm waves-effect waves-light"><i title="Imprimir Etiqueta"
+                    class="fa-regular fa-file-pdf"></i></a></td>
+              <td><a href="/usuarios/editar_arquivo/{{numero}}"
+                  class="btn btn-warning btn-sm waves-effect waves-light"><i title="Editar"
+                    class="fa-regular fa-pen-to-square"></i></a></td>
+              <td><a href="/usuarios/visualizar_arquivo/{{numero}}"
+                  class="btn btn-primary btn-sm waves-effect waves-light"><i title="Visualizar"
+                    class="fa-sharp fa-solid fa-eye"></i></a></td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{{else}}
+<div class="alert alert-info">Nenhum documento encontrado.</div>
+{{/if}}

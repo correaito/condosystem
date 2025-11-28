@@ -1,0 +1,41 @@
+<div class="container col-md-5">
+  <div class="card mb-3 z-depth-1">
+    <div class="card-header">
+      Cadastrar Movimento Caixinha
+    </div>
+    <div class="card-body">
+      <form action="/admin/cadastrar_movimento" method="POST">
+        <div class="md-form">
+          <select class="browser-default custom-select mb-4" id="caixinha" name="caixinha" required>
+            <option value="" disabled selected>Selecione um Caixinha</option>
+            {{#each caixinhas}}
+            <option value="{{_id}}">{{descricao}} - R$ {{valor}}</option>
+            {{/each}}
+          </select>
+          <!-- <label for="caixinha" class="active">Caixinha</label> -->
+        </div>
+        <div class="md-form">
+          <input type="date" class="form-control" id="data" name="data" required />
+          <label for="data" class="active">Data</label>
+        </div>
+        <div class="md-form">
+          <input type="text" class="form-control" id="valor" name="valor" required />
+          <label for="valor">Valor</label>
+        </div>
+        <div class="md-form">
+          <select class="browser-default custom-select mb-4" id="movimento" name="movimento" required>
+            <option value="" disabled selected>Tipo de Movimento</option>
+            <option value="Entrada">Entrada</option>
+            <option value="Saida">Saída</option>
+          </select>
+          <!-- <label for="movimento" class="active">Movimento</label> -->
+        </div>
+        <div class="md-form">
+          <textarea class="md-textarea form-control" id="descricao" name="descricao" rows="3" required></textarea>
+          <label for="descricao">Descrição</label>
+        </div>
+        <button type="submit" class="btn btn-primary waves-effect waves-light">Cadastrar</button>
+      </form>
+    </div>
+  </div>
+</div>

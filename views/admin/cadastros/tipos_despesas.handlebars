@@ -1,0 +1,65 @@
+<div class="container col-md-5">
+  <div class="card mb-3 z-depth-1">
+    <div class="card-header">
+      Cadastro de Tipos de Despesas
+    </div>
+    <div class="card-body">
+      <form action="/admin/cadastra_tipo" method="post">
+        <div class="md-form">
+          <input name="nome" type="text" id="nome" class="form-control" required />
+          <label for="nome" class="active">Nome</label>
+        </div>
+        <div class="md-form">
+          <input name="slug" type="text" id="slug" class="form-control" required />
+          <label for="slug" class="active">Slug</label>
+        </div>
+        <div class="md-form">
+          <select class="browser-default custom-select mb-4" name="classificacao" required>
+            <option value="" disabled selected>Selecione a Classificação</option>
+            <option value="Ordinaria">Ordinária</option>
+            <option value="Extraordinaria">Extraordinária</option>
+          </select>
+          <!-- <label for="classificacao" class="active">Classificação</label> -->
+        </div>
+        <div class="md-form">
+          <select class="browser-default custom-select mb-4" id="caixinha" name="caixinha" required>
+            <option value="Nenhum">Nenhum</option>
+            <option value="Somar">Somar ao Caixinha</option>
+            <option value="Subtrair">Subtrair do Caixinha</option>
+          </select>
+          <!-- <label for="caixinha" class="active">Caixinha</label> -->
+        </div>
+        <div class="md-form" id="caixinhaIdDiv" style="display: none;">
+          <select class="browser-default custom-select mb-4" id="caixinhaId" name="caixinhaId">
+            {{#each caixinhas}}
+            <option value="{{_id}}">{{descricao}} - R$ {{valor}}</option>
+            {{/each}}
+          </select>
+          <!-- <label for="caixinhaId" class="active">Selecione o Caixinha</label> -->
+        </div>
+        <button class="btn btn-primary mt-3 mb-2 waves-effect waves-light" type="submit">Gravar</button>
+        <button class="btn btn-warning mt-3 mb-2 waves-effect waves-light" type="button"
+          onclick="history.back()">Voltar</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Função para mostrar/esconder o select de Caixinha
+  function toggleCaixinhaSelect() {
+    const caixinhaOption = document.getElementById("caixinha").value;
+    const caixinhaSelect = document.getElementById("caixinhaIdDiv");
+    if (caixinhaOption === "Somar" || caixinhaOption === "Subtrair") {
+      caixinhaSelect.style.display = "block";
+    } else {
+      caixinhaSelect.style.display = "none";
+    }
+  }
+
+  // Chame a função ao carregar a página
+  document.addEventListener("DOMContentLoaded", toggleCaixinhaSelect);
+
+  // Adicione o evento de mudança ao select
+  document.getElementById("caixinha").addEventListener("change", toggleCaixinhaSelect);
+</script>

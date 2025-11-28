@@ -1,0 +1,214 @@
+/* =========================================
+   1. General Styles & Typography
+   ========================================= */
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/images/condosystem_bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  margin-top: 70px;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Mobile Background */
+@media screen and (max-aspect-ratio: 9/16) {
+  body {
+    background-image: url("/images/logo_phone.png");
+  }
+}
+
+/* =========================================
+   2. Navbar & Navigation
+   ========================================= */
+.bg-blue {
+  background-color: #1e5252 !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Navbar Spacing */
+.navbar-nav .nav-link i,
+.dropdown-item i {
+  margin-right: 8px;
+  width: 20px;
+  /* Ensure fixed width for alignment */
+  text-align: center;
+}
+
+.navbar-nav .nav-item {
+  margin-right: 15px;
+}
+
+/* Dropdown Submenus */
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu-subitem {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  margin: 0;
+  z-index: 2000;
+}
+
+.dropdown-submenu.show .dropdown-menu-subitem {
+  display: block;
+}
+
+/* Rotate arrow for submenus */
+.dropdown-submenu .dropdown-toggle::after {
+  transform: rotate(-90deg);
+}
+
+.dropdown-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Dropdown Items Typography */
+.dropdown-item {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .dropdown-submenu .dropdown-menu-subitem {
+    position: static;
+    left: auto;
+  }
+}
+
+/* =========================================
+   3. Cards & Dashboard
+   ========================================= */
+.card-header {
+  background-color: #1e5252;
+  color: white;
+  text-align: center;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 1.2em;
+}
+
+.text_card_dash {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/* Dashboard Card Colors */
+.red_light {
+  background-color: #e46161 !important;
+}
+
+.blue_light {
+  background-color: #0000ffa8 !important;
+}
+
+.green_light {
+  background-color: #268411a8 !important;
+}
+
+/* Login Card */
+.login-card {
+  background: #ffffff;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+  transition: transform 0.2s;
+}
+
+/* =========================================
+   4. Forms & Inputs
+   ========================================= */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  border-radius: 5px;
+  transition: all 0.3s;
+  /* Adjusted speed */
+}
+
+.form-control:focus {
+  border-color: #1e5252;
+  box-shadow: 0 0 5px rgba(14, 32, 32, 0.5);
+}
+
+/* Input Groups (Login) */
+.input-group-text {
+  background-color: #f8f9fa;
+  border-right: 0;
+}
+
+.input-group .form-control {
+  border-left: 0;
+}
+
+.input-group:focus-within .input-group-text {
+  border-color: #1e5252;
+  background-color: #fff;
+}
+
+.input-group:focus-within .form-control {
+  border-color: #1e5252;
+  box-shadow: none;
+}
+
+/* Buttons */
+.btn-success {
+  background-color: #1e5252;
+  border-color: #1e5252;
+}
+
+.btn-success:hover {
+  background-color: #164040;
+  border-color: #164040;
+}
+
+/* =========================================
+   5. Tables (DataTables)
+   ========================================= */
+/* Table Headers */
+table th {
+  background-color: #1e5252 !important;
+  border: 0;
+  color: white;
+}
+
+/* Table Backgrounds */
+#tabela-despesas-gerais_wrapper,
+#tabela-default_wrapper,
+#tabela-moradores_wrapper,
+#tabela-list_despesas_wrapper,
+#tabela-despesas-gerais {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* DataTables Elements */
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_paginate,
+.dataTables_wrapper .dataTables_info {
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_paginate,
+.dataTables_wrapper .dataTables_info {
+  width: 100%;
+}

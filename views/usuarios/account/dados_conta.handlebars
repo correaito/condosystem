@@ -1,0 +1,43 @@
+<div class="container col-md-5">
+
+	<div class="card bg-blue mb-3">
+		<div class="card-header">
+			Dados da Conta de Usuário
+		</div>
+		<ul class="list-group list-group-flush">
+			<li class="list-group-item">
+
+				<form action="/usuarios/altera_cadastro/{{user._id}}" method="post" enctype="multipart/form-data">
+					<div class="form-group text-center mb-4">
+						{{#if foto}}
+						<img src="/img/usuarios/{{foto}}" alt="Foto de Perfil" class="rounded-circle img-thumbnail"
+							style="width: 150px; height: 150px; object-fit: cover;">
+						{{else}}
+						<img src="/img/default-avatar.png" alt="Foto de Perfil" class="rounded-circle img-thumbnail"
+							style="width: 150px; height: 150px; object-fit: cover;">
+						{{/if}}
+					</div>
+					<div class="form-group">
+						<label for="foto">Alterar Foto de Perfil</label>
+						<input type="file" name="foto" class="form-control-file" id="foto" accept="image/*">
+					</div>
+					<div class="form-group">
+						<label for="numero">Nome</label>
+						<input type="text" name="nome" class="form-control" id="nome" value="{{nome}}" autofocus>
+						<input type="hidden" name="_method" value="PUT">
+						<input type="hidden" name="_csrf" value="{{csrfToken}}">
+					</div>
+					<div class="form-group">
+						<label for="numero">Email</label>
+						<input type="email" name="email" class="form-control" id="email" value="{{email}}">
+					</div>
+					<a href="/usuarios/altera_senha"><button type="button" class="btn btn-primary"><i
+								class="fa-solid fa-lock"></i> Alterar senha</button></a>
+					<button type="submit" class="btn btn-success"><i class="fa-regular fa-floppy-disk"></i>
+						Gravar</button>
+				</form>
+	</div>
+
+	</li>
+	</ul>
+</div>

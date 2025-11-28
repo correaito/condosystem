@@ -1,0 +1,42 @@
+{{#if pagamentos.length}}
+<div class="container col-md-12">
+  <div class="card mb-3 z-depth-1">
+    <div class="card-header">
+      Listagem de Pagamentos
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table mt-3 mb-2 table-hover table-striped" id="tabela-pagamentos">
+          <thead class="table-dark">
+            <tr>
+              <th>Morador</th>
+              <th>Valor (R$)</th>
+              <th>Conta</th>
+              <th>Data</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each pagamentos}}
+            <tr>
+              <td class="text-nowrap">{{morador.nome}}</td>
+              <td class="text-nowrap">{{valor}}</td>
+              <td>{{conta}}</td>
+              <td>{{formatDate data}}</td>
+              <td>
+                <a href="/admin/excluir_pagamento/{{_id}}"
+                  onclick="return confirm('Tem certeza que deseja excluir este pagamento?');"
+                  class="btn btn-danger btn-sm waves-effect waves-light"><i title="Excluir"
+                    class="fa-regular fa-trash-can"></i></a>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{{else}}
+<div class="alert alert-info">Não há pagamentos registrados.</div>
+{{/if}}

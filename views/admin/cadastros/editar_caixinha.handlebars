@@ -1,0 +1,25 @@
+<div class="container col-md-5">
+  <div class="card mb-3 z-depth-1">
+    <div class="card-header">
+      Editar Caixinha
+    </div>
+    <div class="card-body">
+      <form action="/admin/cadastros/editar_caixinha/{{caixinha._id}}" method="POST">
+        <div class="md-form">
+          <input type="date" class="form-control" id="data" name="data" value="{{caixinha.data}}" />
+          <label for="data" class="active">Data</label>
+        </div>
+        <div class="md-form">
+          <input type="number" class="form-control" id="valor" name="valor" value="{{caixinha.valor}}" disabled />
+          <label for="valor" class="active">Valor</label>
+        </div>
+        <div class="md-form">
+          <input type="text" class="form-control" id="descricao" name="descricao" value="{{caixinha.descricao}}" />
+          <label for="descricao" class="active">Descrição</label>
+        </div>
+        <button type="submit" class="btn btn-primary waves-effect waves-light">Salvar</button>
+        <a href="/admin/cadastros/listar_caixinhas" class="btn btn-secondary waves-effect waves-light">Cancelar</a>
+      </form>
+    </div>
+  </div>
+</div>

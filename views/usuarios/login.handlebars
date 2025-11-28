@@ -1,0 +1,134 @@
+<style>
+    .flip-container {
+        perspective: 1000px;
+    }
+
+    .flipper {
+        position: relative;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .front,
+    .back {
+        grid-row: 1;
+        grid-column: 1;
+        backface-visibility: hidden;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    .front {
+        z-index: 2;
+        transform: rotateY(0deg);
+    }
+
+    .back {
+        transform: rotateY(180deg);
+    }
+
+    .flip-container.flip .flipper {
+        transform: rotateY(180deg);
+    }
+</style>
+
+<div class="row justify-content-center align-items-center" style="min-height: 75vh;">
+    <div class="col-md-5 flip-container">
+        <div class="flipper" id="flipper">
+            <!-- Front: Login -->
+            <div class="front">
+                <div class="card mb-3">
+                    <div class="card-header text-white text-center font-weight-bold" style="background-color: #1e5252;">
+                        Acesso ao Sistema
+                    </div>
+                    <div class="card-body p-4">
+                        <form action="/usuarios/login" method="post">
+                            <div class="md-form">
+                                <input type="email" id="email" class="form-control" name="email" required autofocus>
+                                <label for="email">E-mail</label>
+                            </div>
+                            <div class="md-form">
+                                <input type="password" id="senha" class="form-control" name="senha" required>
+                                <label for="senha">Senha</label>
+                            </div>
+                            <button class="btn btn-success btn-block mt-4 waves-effect waves-light"
+                                type="submit">Entrar</button>
+                        </form>
+                        <div class="text-center mt-3">
+                            <a href="#" id="show-register" style="color: #1e5252; font-weight: bold;">Ainda não tem
+                                conta? Crie aqui</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back: Register -->
+            <div class="back">
+                <div class="card mb-3">
+                    <div class="card-header text-white text-center font-weight-bold" style="background-color: #1e5252;">
+                        Registro do Sistema
+                    </div>
+                    <div class="card-body p-4">
+                        <form action="/usuarios/registro" method="post">
+                            <div class="md-form">
+                                <input type="text" id="nome" name="nome" class="form-control" required>
+                                <label for="nome">Nome</label>
+                            </div>
+                            <div class="md-form">
+                                <input type="text" id="telefone" name="telefone" class="form-control" required>
+                                <label for="telefone">Telefone</label>
+                            </div>
+                            <div class="md-form">
+                                <input type="text" id="apto" name="apto" class="form-control" required>
+                                <label for="apto">Apto</label>
+                            </div>
+                            <div class="md-form">
+                                <input type="email" id="email-reg" name="email" class="form-control" required>
+                                <label for="email-reg">Email</label>
+                            </div>
+                            <div class="md-form">
+                                <input type="password" id="senha-reg" name="senha" class="form-control" required>
+                                <label for="senha-reg">Senha</label>
+                            </div>
+                            <div class="md-form">
+                                <input type="password" id="senha2" name="senha2" class="form-control" required>
+                                <label for="senha2">Repita a sua senha</label>
+                            </div>
+                            <button type="submit" class="btn btn-success btn-block mt-4 waves-effect waves-light">Criar
+                                conta</button>
+                        </form>
+                        <div class="text-center mt-3">
+                            <a href="#" id="show-login" style="color: #1e5252; font-weight: bold;">Já tem conta? Entre
+                                aqui</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const flipContainer = document.querySelector('.flip-container');
+        const showRegister = document.getElementById('show-register');
+        const showLogin = document.getElementById('show-login');
+
+        if (showRegister && flipContainer) {
+            showRegister.addEventListener('click', function (e) {
+                e.preventDefault();
+                flipContainer.classList.add('flip');
+            });
+        }
+
+        if (showLogin && flipContainer) {
+            showLogin.addEventListener('click', function (e) {
+                e.preventDefault();
+                flipContainer.classList.remove('flip');
+            });
+        }
+    });
+</script>

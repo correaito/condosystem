@@ -1,0 +1,50 @@
+<div class="container col-md-9">
+  <div class="card mb-3 z-depth-1">
+    <div class="card-header">
+      Faturamento
+    </div>
+    <div class="card-body">
+      <form action="/admin/faturamento" method="POST">
+        <div class="md-form">
+          <input type="text" class="form-control" value="{{numero}}" id="numero" name="numero" readonly>
+          <label for="numero" class="active">Número</label>
+        </div>
+        <div class="md-form">
+          <input type="text" class="form-control" id="competencia" name="competencia" required autofocus>
+          <label for="competencia">Competência</label>
+        </div>
+        <div class="table-responsive">
+          <table class="table mt-3 mb-2 table-hover table-striped" id="tabela-faturamento">
+            <thead>
+              <tr>
+                <th>Selecionar</th>
+                <th>Descrição</th>
+                <th>Valor (R$)</th>
+                <th>Competencia</th>
+              </tr>
+            </thead>
+            <tbody id="despesasTableBody">
+              {{#each despesas}}
+              <tr>
+                <td>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="despesa{{this._id}}" name="despesas"
+                      value="{{this._id}}">
+                    <label class="custom-control-label" for="despesa{{this._id}}"></label>
+                  </div>
+                </td>
+                <td>{{this.descricao}}</td>
+                <td>{{this.valor}}</td>
+                <td>{{this.competencia}}</td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+        <button type="submit" class="btn btn-success mt-4 waves-effect waves-light">Faturar</button>
+        <button type="button" onclick="history.back()"
+          class="btn btn-warning mt-4 waves-effect waves-light">Voltar</button>
+      </form>
+    </div>
+  </div>
+</div>

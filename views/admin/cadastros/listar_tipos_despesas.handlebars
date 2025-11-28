@@ -1,0 +1,39 @@
+<div class="container col-md-12">
+  <div class="card mb-3 z-depth-1">
+    <div class="card-header">
+      Listagem de Tipos de Despesas
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table mt-1 mb-2 table-hover table-striped" id="tabela-list_despesas">
+          <thead class="table-dark">
+            <tr>
+              <th>Nome</th>
+              <th>Slug</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each tiposDespesas}}
+            <tr>
+              <td class="text-nowrap">{{this.nome}}</td>
+              <td class="text-nowrap">{{this.slug}}</td>
+              <td class="text-nowrap">
+                <a href="/admin/cadastros/editar_tipo_despesa/{{this._id}}" title="Editar"
+                  class="btn btn-warning btn-sm waves-effect waves-light"><i
+                    class="fa-regular fa-pen-to-square"></i></a>
+                <form action="/admin/cadastros/excluir_tipo_despesa/{{this._id}}" method="POST" style="display:inline;">
+                  <button type="submit"
+                    onclick="return confirm('Tem certeza que deseja excluir este tipo de despesa?');" title="Excluir"
+                    class="btn btn-danger btn-sm waves-effect waves-light"><i
+                      class="fa-solid fa-trash-can"></i></button>
+                </form>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

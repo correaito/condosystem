@@ -1,0 +1,157 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-blue fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="javascript:void(0);"><i class="fa-regular fa-building"></i> CondoSystem</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 submenu justify-content-between">
+        {{#if user}}
+        <!-- Dashboard -->
+        <li class="nav-item">
+          <a class="nav-link waves-effect waves-light" aria-current="page" href="/usuarios/dashboard"><i
+              class="fa-solid fa-house-chimney"></i> Dash</a>
+        </li>
+
+        <!-- Cadastros -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle waves-effect waves-light" href="#" id="navbarDropdownCadastros"
+            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-folder-plus"></i> Cadastros
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownCadastros">
+            <!-- Moradores -->
+            <div class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle dropdown-link" href="#"><i class="fa-solid fa-users"></i>
+                Moradores</a>
+              <div class="dropdown-menu dropdown-menu-subitem">
+                <a class="dropdown-item" href="/admin/cadastros/moradores"><i class="fa-solid fa-user-plus"></i>
+                  Cadastrar</a>
+                <a class="dropdown-item" href="/admin/cadastros/listar_moradores"><i class="fa-solid fa-list"></i>
+                  Listar</a>
+              </div>
+            </div>
+            <!-- Tipos de Despesa -->
+            <div class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle dropdown-link" href="#"><i class="fa-solid fa-tags"></i>
+                Tipos de Despesa</a>
+              <div class="dropdown-menu dropdown-menu-subitem">
+                <a class="dropdown-item" href="/admin/cadastros/tipos_despesas"><i class="fa-solid fa-plus-circle"></i>
+                  Cadastrar</a>
+                <a class="dropdown-item" href="/admin/cadastros/listar_tipos_despesas"><i class="fa-solid fa-list"></i>
+                  Listar</a>
+              </div>
+            </div>
+            <!-- Tipos de Caixinha -->
+            <div class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle dropdown-link" href="#"><i class="fa-solid fa-box-open"></i>
+                Tipos de Caixinha</a>
+              <div class="dropdown-menu dropdown-menu-subitem">
+                <a class="dropdown-item" href="/admin/cadastros/cadastrar_caixinha"><i
+                    class="fa-solid fa-plus-circle"></i> Cadastrar</a>
+                <a class="dropdown-item" href="/admin/cadastros/listar_caixinhas"><i class="fa-solid fa-list"></i>
+                  Listar</a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <!-- Financeiro -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle waves-effect waves-light" href="#" id="navbarDropdownFinanceiro"
+            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-sack-dollar"></i> Financeiro
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownFinanceiro">
+            <!-- Faturamento -->
+            <div class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle dropdown-link" href="#"><i
+                  class="fa-solid fa-file-invoice-dollar"></i>
+                Faturamento</a>
+              <div class="dropdown-menu dropdown-menu-subitem">
+                <a class="dropdown-item" href="/admin/faturamento"><i class="fa-solid fa-cash-register"></i> Gerar
+                  Faturamento</a>
+                <a class="dropdown-item" href="/admin/listar_contas"><i class="fa-solid fa-list-ol"></i> Listar
+                  Contas</a>
+              </div>
+            </div>
+            <!-- Despesas -->
+            <div class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle dropdown-link" href="#"><i
+                  class="fa-solid fa-money-bill-transfer"></i>
+                Despesas</a>
+              <div class="dropdown-menu dropdown-menu-subitem">
+                <a class="dropdown-item" href="/admin/lancar_despesa_geral"><i class="fa-solid fa-pen-to-square"></i>
+                  Lançar Despesa</a>
+                <a class="dropdown-item" href="/admin/listar_despesas"><i class="fa-solid fa-list-ul"></i> Listar
+                  Despesas</a>
+              </div>
+            </div>
+            <!-- Caixinha -->
+            <div class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle dropdown-link" href="#"><i class="fa-solid fa-piggy-bank"></i>
+                Caixinha</a>
+              <div class="dropdown-menu dropdown-menu-subitem">
+                <a class="dropdown-item" href="/admin/cadastrar_movimento"><i class="fa-solid fa-money-bill-wave"></i>
+                  Movimentar</a>
+                <a class="dropdown-item" href="/admin/listar_movimentos"><i class="fa-solid fa-list-check"></i>
+                  Extrato</a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <!-- Relatórios -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle waves-effect waves-light" href="#" id="navbarDropdownRelatorios"
+            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-chart-line"></i> Relatórios
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownRelatorios">
+            <a class="dropdown-item" href="/admin/gera_extrato_conta"><i class="fa-solid fa-file-pdf"></i> Extrato
+              Contas</a>
+            <a class="dropdown-item" href="/admin/listar_saldos"><i class="fa-solid fa-scale-balanced"></i> Saldos
+              Moradores</a>
+            <a class="dropdown-item" href="/admin/listar_pagamentos"><i class="fa-solid fa-hand-holding-dollar"></i>
+              Pagamentos Recebidos</a>
+          </div>
+        </li>
+
+        <!-- Configurações -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle waves-effect waves-light" href="#" id="navbarDropdownConfig" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-gears"></i> Configurações
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownConfig">
+            <a class="dropdown-item" href="/admin/altera_nivel"><i class="fa-solid fa-user-shield"></i> Nível de
+              Usuário</a>
+          </div>
+        </li>
+        {{/if}}
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        {{#if user}}
+        <li class="nav-item d-flex align-items-center mr-3">
+          <a href="/usuarios/dados_conta" class="d-flex align-items-center text-decoration-none"
+            title="Alterar dados da conta">
+            {{#if user.foto}}
+            <img src="/img/usuarios/{{user.foto}}" class="rounded-circle z-depth-1" alt="Avatar"
+              style="width: 35px; height: 35px; object-fit: cover;">
+            {{else}}
+            <img src="/img/default-avatar.png" class="rounded-circle z-depth-1" alt="Avatar"
+              style="width: 35px; height: 35px; object-fit: cover;">
+            {{/if}}
+            <span class="text-white ml-2 font-weight-bold d-none d-md-block">{{user.nome}}</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect waves-light" href="/usuarios/logout"><i
+              class="fa-solid fa-right-from-bracket"></i> Sair</a>
+        </li>
+        {{/if}}
+      </ul>
+    </div>
+  </div>
+</nav>

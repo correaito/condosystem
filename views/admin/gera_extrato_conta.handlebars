@@ -1,0 +1,32 @@
+<div class="container col-md-5">
+  <div class="card mb-3 z-depth-1">
+    <div class="card-header text-white">
+      Gera Extrato do Morador
+    </div>
+    <div class="card-body">
+      <form action="/admin/gerar_extrato" method="post" target="_blank">
+        <div class="md-form">
+          <select id="morador" name="morador" class="browser-default custom-select mb-4" required>
+            <option selected disabled>Selecione uma opção</option>
+            {{#each moradores}}
+            <option value="{{this.nome}}">{{this.nome}}</option>
+            {{/each}}
+          </select>
+          <!-- <label for="morador" class="active">Morador</label> -->
+        </div>
+
+        <div class="md-form">
+          <input type="date" id="dataInicio" name="dataInicio" class="form-control" required />
+          <label for="dataInicio" class="active">Data Início</label>
+        </div>
+
+        <div class="md-form">
+          <input type="date" id="dataFim" name="dataFim" class="form-control" required />
+          <label for="dataFim" class="active">Data Fim</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary waves-effect waves-light">Gerar Extrato</button>
+      </form>
+    </div>
+  </div>
+</div>

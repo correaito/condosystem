@@ -1,0 +1,53 @@
+{{#if despesas.length}}
+
+<div class="container col-md-12">
+  <div class="card mb-3 z-depth-1">
+    <div class="card-header">
+      Listagem de Despesas
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table mt-3 mb-2 table-hover table-striped" id="tabela-despesas-gerais">
+          <thead class="table-dark">
+            <tr>
+              <th>Descrição</th>
+              <th>Valor</th>
+              <th>Data</th>
+              <th>Competência</th>
+              <th></th>
+              {{#if isAdmin}}
+              <th></th>
+              <th></th>
+              {{/if}}
+            </tr>
+          </thead>
+          <tbody>
+            {{#each despesas}}
+            <tr>
+              <td class="text-nowrap">{{descricao}}</td>
+              <td class="text-nowrap">R$ {{valor}}</td>
+              <td>{{formatDate date}}</td>
+              <td>{{competencia}}</td>
+              {{#if ../isAdmin}}
+              <td><a href="/admin/editar_despesa/{{_id}}" class="btn btn-warning btn-sm waves-effect waves-light"><i
+                    title="Editar" class="fa-regular fa-pen-to-square"></i></a></td>
+              <td><a href="/admin/excluir_despesa/{{_id}}"
+                  onclick="return confirm('Tem certeza que deseja excluir esta despesa?');"
+                  class="btn btn-danger btn-sm waves-effect waves-light"><i title="Excluir"
+                    class="fa-solid fa-trash"></i></a></td>
+              {{/if}}
+              <td><a href="/usuarios/visualizar_despesa/{{_id}}" class="btn btn-info btn-sm waves-effect waves-light"><i
+                    title="Visualizar" class="fa-solid fa-magnifying-glass"></i></a></td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{{else}}
+<div class="container col-md-12 mt-4">
+  <div class="alert alert-info">Nenhuma despesa encontrada.</div>
+</div>
+{{/if}}

@@ -1,0 +1,32 @@
+<div class="container col-md-5">
+  <div class="card mb-3 z-depth-1">
+    <div class="card-header">
+      Adicionar despesa a Conta
+    </div>
+    <div class="card-body">
+      <form action="/admin/add_despesa/{{conta._id}}" method="POST">
+        <div class="md-form">
+          <select class="browser-default custom-select mb-4" id="tipodespesa" name="tipodespesa" required>
+            <option value="" disabled selected>Escolha a Despesa</option>
+            {{#each tiposDespesa}}
+            <option value="{{this._id}}">{{this.nome}}</option>
+            {{/each}}
+          </select>
+          <!-- <label for="tipodespesa" class="active">Despesa</label> -->
+        </div>
+        <div class="md-form">
+          <input type="number" step="0.01" class="form-control" id="valor" name="valor" required>
+          <label for="valor">Valor (R$)</label>
+        </div>
+        <div class="md-form">
+          <input type="text" class="form-control" id="competencia" name="competencia" required>
+          <label for="competencia">Competência</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary waves-effect waves-light">Adicionar Despesa</button>
+        <a href="/admin/detalhar_conta/{{conta._id}}"><button type="button"
+            class="btn btn-secondary waves-effect waves-light">Voltar</button></a>
+      </form>
+    </div>
+  </div>
+</div>

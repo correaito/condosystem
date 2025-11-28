@@ -1,0 +1,43 @@
+<div class="container col-md-5">
+  <div class="card mb-3 z-depth-1">
+    <div class="card-header">
+      Cadastro de Moradores
+    </div>
+    <div class="card-body">
+      <form action="/admin/cadastra_morador" method="post">
+        <div class="md-form">
+          <input name="nome" type="text" id="nome" class="form-control" required />
+          <label for="nome" class="active">Nome</label>
+        </div>
+        <div class="md-form">
+          <input name="apto" type="text" id="apto" class="form-control" required />
+          <label for="apto" class="active">Apto</label>
+        </div>
+        <div class="md-form">
+          <input name="email" type="text" id="email" class="form-control" />
+          <label for="email" class="active">Email</label>
+        </div>
+        <div class="md-form">
+          <input name="telefone" type="text" id="telefone" class="form-control" />
+          <label for="telefone" class="active">Telefone</label>
+        </div>
+        <div class="md-form">
+          <input name="saldo" type="text" id="saldo" class="form-control" />
+          <label for="saldo" class="active">Saldo</label>
+        </div>
+        <div class="md-form">
+          <select name="situacao" class="browser-default custom-select mb-4" required>
+            <option value="" disabled selected>Selecione a Situação</option>
+            <option value="Proprietário">Proprietário</option>
+            <option value="Proprietário Morador">Proprietário Morador</option>
+            <option value="Inquilino">Inquilino</option>
+          </select>
+          <!-- <label for="situacao" class="active">Situação</label> -->
+        </div>
+        <button class="btn btn-primary mt-3 mb-2 waves-effect waves-light" type="submit">Gravar</button>
+        <button class="btn btn-warning mt-3 mb-2 waves-effect waves-light" type="button"
+          onclick="history.back()">Voltar</button>
+      </form>
+    </div>
+  </div>
+</div>
